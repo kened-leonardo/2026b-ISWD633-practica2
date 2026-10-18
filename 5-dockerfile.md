@@ -57,13 +57,15 @@ No olvides verificar en qué directorio se encuentra el archivo Dockerfile
 ```
 
 **¿Cuántos pasos se han ejecutado?**
-# RESPONDER 
+Se ejecutaron 5 pasos ([1/5] a [5/5]): FROM, RUN (corrección de repositorios), RUN yum update, RUN yum install httpd y COPY. Con el Dockerfile original eran 4, pero fue necesario agregar un RUN adicional porque CentOS 7 ya no tiene sus repositorios oficiales activos y el build fallaba. EXPOSE y CMD solo agregan metadatos, por eso no aparecen numerados.
 
 ### Inspeccionar la imagen creada
-# COMPLETAR CON UNA CAPTURA
+<img width="1046" height="1127" alt="image" src="https://github.com/user-attachments/assets/481a334f-89f9-48fa-aeaf-81ef0b5af5c2" />
 
 **Modificar el archivo index.html para incluir su nombre y luego crear una nueva versión de la imagen anterior**
 **¿Cuántos pasos se han ejecutado? ¿Observa algo diferente en la creación de la imagen**
+
+Se ejecutaron 5 pasos ([1/5] a [5/5]), igual que en la versión 1.0. La diferencia es que los pasos [2/5], [3/5] y [4/5] (los tres RUN) aparecieron como CACHED, porque Docker reutilizó las capas ya construidas al no haber cambiado nada. Solo el paso [5/5] COPY se ejecutó de nuevo, porque el archivo index.html fue modificado. Por eso la construcción fue mucho más rápida (1.4 s).
 
 ## Mecanismo de caché
 Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso de construcción y evitar la repetición de pasos que no han cambiado. Cada instrucción en un Dockerfile crea una capa en la imagen final. Docker intenta reutilizar las capas de una construcción anterior si no han cambiado, lo que reduce significativamente el tiempo de construcción.
@@ -79,10 +81,10 @@ Docker usa un mecanismo de caché cuando crea imágenes para acelerar el proceso
 ```
 
 ### ¿Con que puerto host se está realizando el mapeo?
-# COMPLETAR CON LA RESPUESTA
+Con un puerto aleatorio del host asignado por Docker en mi caso el 32768, que apunta al puerto 80 del contenedor. Esto ocurre porque -P publica los puertos declarados con EXPOSE en puertos libres del host.
 
 **¿Qué es una imagen huérfana?**
-# COMPLETAR CON LA RESPUESTA
+Es una imagen sin nombre ni etiqueta (<none>:<none>) que ya no está referenciada por otra imagen ni contenedor. Suele generarse al reconstruir una imagen con el mismo nombre y tag: la anterior pierde su etiqueta y queda huérfana (dangling).
 
 ### Identificar imágenes huérfanas
 ```
