@@ -10,7 +10,7 @@ Asignar núcleos de CPU específicos:
 ```
 
 **¿Como saber el numero de procesadores virtuales que tiene una máquina?**
-## COMPLETAR
+## Se puede saber ejecutando en la terminal el comando docker info --format "{{.NCPU}}", que muestra cuántos procesadores virtuales tiene disponibles Docker. En mi caso el resultado fue 12, es decir, Docker ve 12 procesadores virtuales (numerados del 0 al 11).
 
 ## Ejemplos
 _Puedes copiar y ejecutar directamente cada uno de los comandos_
