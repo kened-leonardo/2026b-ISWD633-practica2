@@ -1,3 +1,3 @@
-# COMPLETAR  
+# Antes de la práctica conocía Docker de forma básica y no tenía claro cómo se controlan, monitorean y construyen los contenedores. Con ella aprendí a limitar memoria y procesador, a configurar healthchecks, a crear imágenes con Dockerfile aprovechando el caché, y a aplicar políticas de reinicio con --restart en el docker run. También resolví un problema real: los repositorios inactivos de CentOS 7 hacían fallar el build, y lo corregí con un RUN sed que apunta a vault.centos.org.
 Comparando sus conocimientos antes de hacer la práctica con sus conocimientos después de hacer la tarea, explicar los principales aprendizajes logrados para beneficio de su formación profesional.  
 Si solucionó un problema presentado al realizar la práctica también se debe documentar.
